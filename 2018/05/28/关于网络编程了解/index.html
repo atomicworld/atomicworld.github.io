@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "bed29bd9"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/cat1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat1-32x32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat1-16x16.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="socket,ServerSocket,网络协议," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="网络编程之前一直对于网络编程有一定的困惑，想起来学习网络编程。  计算机网络通讯是如何进行的？ 计算机网络中的一个个协议都是抽象的，怎么和具体实际结合起来？ 怎么使用socket编写复杂的服务器程序  网络编程的了解​    Java提供了非常易用的网络API，调用这些API我们可以很方便的通过建立TCP/IP或UDP套接字，在网络之间进行相互通信，其中TCP要比UDP更加常用。  TCP是可靠的">
+<meta name="keywords" content="socket,ServerSocket,网络协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于网络编程了解">
+<meta property="og:url" content="https://github.com/atomicworld/2018/05/28/关于网络编程了解/index.html">
+<meta property="og:site_name" content="Atomic">
+<meta property="og:description" content="网络编程之前一直对于网络编程有一定的困惑，想起来学习网络编程。  计算机网络通讯是如何进行的？ 计算机网络中的一个个协议都是抽象的，怎么和具体实际结合起来？ 怎么使用socket编写复杂的服务器程序  网络编程的了解​    Java提供了非常易用的网络API，调用这些API我们可以很方便的通过建立TCP/IP或UDP套接字，在网络之间进行相互通信，其中TCP要比UDP更加常用。  TCP是可靠的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-28T15:09:40.380Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于网络编程了解">
+<meta name="twitter:description" content="网络编程之前一直对于网络编程有一定的困惑，想起来学习网络编程。  计算机网络通讯是如何进行的？ 计算机网络中的一个个协议都是抽象的，怎么和具体实际结合起来？ 怎么使用socket编写复杂的服务器程序  网络编程的了解​    Java提供了非常易用的网络API，调用这些API我们可以很方便的通过建立TCP/IP或UDP套接字，在网络之间进行相互通信，其中TCP要比UDP更加常用。  TCP是可靠的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/atomicworld/2018/05/28/关于网络编程了解/"/>
+
+
+
+
+
+  <title>关于网络编程了解 | Atomic</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Atomic</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">深夜12点客栈</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/atomicworld/2018/05/28/关于网络编程了解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Atomic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/SonYeJin.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Atomic">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于网络编程了解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T21:39:07+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/socket/" itemprop="url" rel="index">
+                    <span itemprop="name">socket</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/socket/ServerSocket/" itemprop="url" rel="index">
+                    <span itemprop="name">ServerSocket</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/socket/ServerSocket/网络协议/" itemprop="url" rel="index">
+                    <span itemprop="name">网络协议</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/28/关于网络编程了解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/28/关于网络编程了解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><p>之前一直对于网络编程有一定的困惑，想起来学习网络编程。</p>
+<ul>
+<li>计算机网络通讯是如何进行的？</li>
+<li>计算机网络中的一个个协议都是抽象的，怎么和具体实际结合起来？</li>
+<li>怎么使用socket编写复杂的服务器程序</li>
+</ul>
+<h3 id="网络编程的了解"><a href="#网络编程的了解" class="headerlink" title="网络编程的了解"></a>网络编程的了解</h3><p>​    Java提供了非常易用的网络API，调用这些API我们可以很方便的通过建立TCP/IP或UDP套接字，在网络之间进行相互通信，其中TCP要比UDP更加常用。</p>
+<ul>
+<li>TCP是可靠的数据传输，中间会涉及到很多通讯协议，来约束客户端和服务端数据的发送和接收</li>
+<li>UDP是不可靠的数据传输，相比与TCP来说少了很多的协议开销 </li>
+</ul>
+<h3 id="Socket连接服务端："><a href="#Socket连接服务端：" class="headerlink" title="Socket连接服务端："></a>Socket连接服务端：</h3><h5 id="创建socket："><a href="#创建socket：" class="headerlink" title="创建socket："></a>创建socket：</h5><p>​    采用Ip地址的方式或者域名的方式创建socket：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Socket socket = new Socket(&quot;78.46.84.171&quot;, 80);</span><br><span class="line">Socket socket = new Socket(&quot;jenkov.com&quot;, 80);</span><br></pre></td></tr></table></figure>
+<h5 id="发送数据："><a href="#发送数据：" class="headerlink" title="发送数据："></a>发送数据：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Socket socket = new Socket(&quot;jenkov.com&quot;, 80);</span><br><span class="line">OutputStream out = socket.getOutputStream(); </span><br><span class="line"></span><br><span class="line">out.write(&quot;some data&quot;.getBytes());</span><br><span class="line">out.flush();</span><br><span class="line">out.close(); </span><br><span class="line">socket.close();</span><br></pre></td></tr></table></figure>
+<p>​    想要通过网络将数据发送到服务器端，一定不要忘记调用<strong>flush()</strong>方法。<strong>操作系统底层的TCP/IP实现会先将数据放入一个更大的数据缓存块中，而缓存块的大小是与TCP/IP的数据包大小相适应的。</strong>（译者注：调用flush()方法只是将数据写入操作系统缓存中，并不保证数据会立即发送） </p>
+<h5 id="读取数据："><a href="#读取数据：" class="headerlink" title="读取数据："></a>读取数据：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Socket socket = new Socket(&quot;jenkov.com&quot;, 80);</span><br><span class="line">InputStream in = socket.getInputStream(); </span><br><span class="line"></span><br><span class="line">int data = in.read();</span><br><span class="line">//... read more data... </span><br><span class="line"></span><br><span class="line">in.close();</span><br><span class="line">socket.close();</span><br></pre></td></tr></table></figure>
+<p>​    需要注意的是，从Socket的输入流中读取数据并不能读取文件那样，一直调用read()方法直到返回-1为止，因为对Socket而言，只有当服务端关闭连接时，Socket的输入流才会返回-1，而是事实上服务器并不会不停地关闭连接。假设我们想要通过一个连接发送多个请求，那么在这种情况下关闭连接就显得非常愚蠢。</p>
+<p>​    因此，<strong>从Socket的输入流中读取数据时我们必须要知道需要读取的字节数</strong>，这可以通过让服务器在数据中告知发送了多少字节来实现，也可以采用在<strong>数据末尾设置特殊字符</strong>标记的方式连实现。</p>
+<h5 id="关闭Socket："><a href="#关闭Socket：" class="headerlink" title="关闭Socket："></a>关闭Socket：</h5><p>​    当使用完Socket后我们必须将Socket关闭，断开与服务器之间的连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Socket socket = new Socket(&quot;jenkov.com&quot;, 80); </span><br><span class="line">… do something …</span><br><span class="line">socket.close();</span><br></pre></td></tr></table></figure>
+<h3 id="ServerSocket监听客户端连接"><a href="#ServerSocket监听客户端连接" class="headerlink" title="ServerSocket监听客户端连接 :"></a>ServerSocket监听客户端连接 :</h3><h5 id="创建ServerSocket："><a href="#创建ServerSocket：" class="headerlink" title="创建ServerSocket："></a>创建ServerSocket：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ServerSocket serverSocket = new ServerSocket(9000);</span><br></pre></td></tr></table></figure>
+<p>​    ServerSocket监听9000端口的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ServerSocket serverSocket = new ServerSocket(9000); </span><br><span class="line">boolean isStopped = false;</span><br><span class="line">while(!isStopped) &#123;   </span><br><span class="line">	Socket clientSocket = serverSocket.accept();    </span><br><span class="line">	//do something with clientSocket</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    调用了<strong>accept()</strong>方法的类都只获得一个请求的连接 ，请求的连接也只能在线程运行的server中调用了accept()方法之后才能够接受请求。线程运行在server中其它所有的方法上的时候都不能接受客户端的连接请求。所以”接受”请求的线程通常都会把Socket的请求连接放入一个工作线程池中，然后再和客户端连接。更多关于多线程服务端设计的文档请参考 java多线程服务。</p>
+<h5 id="服务端Sockets关闭："><a href="#服务端Sockets关闭：" class="headerlink" title="服务端Sockets关闭："></a>服务端Sockets关闭：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serverSocket.close();</span><br></pre></td></tr></table></figure>
+<h3 id="DatagramSocket"><a href="#DatagramSocket" class="headerlink" title="DatagramSocket"></a>DatagramSocket</h3><p>UDP与TCP的不同：</p>
+<ul>
+<li>当通过TCP发送数据时，首先创建连接。一旦TCP连接建立TCP守护程序，您的数据到达另一端，或者它将告诉您发生了一个错误</li>
+<li>当通过UDP发送数据时，您只需将数据包（数据报）发送到网络上的某个IP地址即可。不能保证数据会到达。也不能保证UDP数据包到达接收方的顺序。这意味着UDP具有比TCP更少的协议开销</li>
+<li>UDP在不在乎某些帧丢失的情况下，更适合做数据传输；例如：网络直播，也许少一帧数据并不会有太大的影响。</li>
+</ul>
+<h5 id="DatagramSocket的使用"><a href="#DatagramSocket的使用" class="headerlink" title="DatagramSocket的使用"></a>DatagramSocket的使用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">byte[] buffer = new byte[65508];</span><br><span class="line">InetAddress address = InetAddress.getByName(&quot;jenkov.com&quot;);</span><br><span class="line"></span><br><span class="line">DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, 9000);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>字节缓冲数组，也就是UDP数据报中发送的数据。缓冲区长度为65508字节，也就是在单个UDP包中发送的最大数据量。</li>
+<li>InetAddress包含了UDP数据发送的服务器地址（IP地址或者域名），通过<strong>getByName()</strong> 方法返回定主机名匹配的IP地址的InetAddress实例</li>
+<li>计算机通过<strong>不同的进程</strong>，同时监听UDP和TCP中的80端口，不会产生冲突</li>
+</ul>
+<h5 id="发送数据：-1"><a href="#发送数据：-1" class="headerlink" title="发送数据："></a>发送数据：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DatagramSocket datagramSocket = new DatagramSocket();</span><br><span class="line">byte[] buffer = &quot;Hello DatagramSocket&quot;.getBytes();</span><br><span class="line">InetAddress receiverAddress = InetAddress.getLocalHost();</span><br><span class="line"></span><br><span class="line">DatagramPacket packet = new DatagramPacket(buffer, buffer.length, receiverAddress, 80);</span><br><span class="line">datagramSocket.send(packet);</span><br></pre></td></tr></table></figure>
+<p>​    <strong>send()</strong> 方法发送数据</p>
+<h5 id="接收数据："><a href="#接收数据：" class="headerlink" title="接收数据："></a>接收数据：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DatagramSocket datagramSocket = new DatagramSocket(80);</span><br><span class="line"></span><br><span class="line">byte[] buffer = new byte[20];</span><br><span class="line">DatagramPacket packet = new DatagramPacket(buffer, buffer.length);</span><br><span class="line"></span><br><span class="line">datagramSocket.receive(packet);</span><br></pre></td></tr></table></figure>
+<p>​    <strong>receive()</strong> 方法接收数据，byte[] buffer用来接收，发出来的数据包，你应该通过简单的协议，数据长度或者特殊的结束符来标志一个UDP报文的大小。</p>
+<h3 id="URL-和-URLConnection"><a href="#URL-和-URLConnection" class="headerlink" title="URL 和 URLConnection"></a>URL 和 URLConnection</h3><p>​    这两个类可以用来创建客户端到web服务器（HTTP服务器）的连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://jenkov.com&quot;);</span><br><span class="line">URLConnection urlConnection = url.openConnection();</span><br><span class="line"></span><br><span class="line">InputStream input = urlConnection.getInputStream();</span><br><span class="line">int data = input.read();</span><br><span class="line"></span><br><span class="line">while(data != -1)&#123;</span><br><span class="line">	System.out.print((char) data);</span><br><span class="line">	data = input.read();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">input.close();</span><br></pre></td></tr></table></figure>
+<h5 id="HTTP链接：GET和POST"><a href="#HTTP链接：GET和POST" class="headerlink" title="HTTP链接：GET和POST"></a>HTTP链接：GET和POST</h5><p>​    默认情况下URLConnection 发送的请求时GET，如果需要发送POST请求，需要使用如下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;http://jenkov.com&quot;);</span><br><span class="line">URLConnection urlConnection = url.openConnection();</span><br><span class="line">urlConnection.setDoOutput(true);</span><br></pre></td></tr></table></figure>
+<pre><code>- 一旦你调用了setDoOutput(true)，你就可以打开URLConnection的OutputStream：
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OutputStream output = urlConnection.getOutputStream();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>你可以使用这个OutputStream向相应的HTTP请求中写任何数据，但你要记得将其转换成URL编码（关于URL编码的解释，自行Google）</li>
+<li>（译者注：具体名字是：application/x-www-form-urlencoded MIME 格式编码）。当你写完数据的时候要记得关闭OutputStream。</li>
+</ul>
+<p>从URLs到本地文件</p>
+<p>​    URL也被叫做统一资源定位符。如果你的代码不关心文件是来自网络还是来自本地文件系统，URL类是另外一种打开文件的方式，使用URL类打开一个本地文件系统文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">URL url = new URL(&quot;file:/c:/data/test.txt&quot;);</span><br><span class="line">URLConnection urlConnection = url.openConnection();</span><br><span class="line">InputStream input = urlConnection.getInputStream();</span><br><span class="line"></span><br><span class="line">int data = input.read();</span><br><span class="line">while(data != -1) &#123;</span><br><span class="line">	System.out.print((char) data);</span><br><span class="line">	data = input.read();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">input.close();</span><br></pre></td></tr></table></figure>
+<h3 id="JarURLConnection"><a href="#JarURLConnection" class="headerlink" title="JarURLConnection"></a>JarURLConnection</h3><p>​    JarURLConnection类用来连接Java Jar文件，一旦连接上，你可以获取Jar文件的信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String urlString = &quot;http://butterfly.jenkov.com/&quot;</span><br><span class="line">                 + &quot;container/download/&quot;</span><br><span class="line">                 + &quot;jenkov-butterfly-container-2.9.9-beta.jar&quot;;</span><br><span class="line"> </span><br><span class="line">URL jarUrl = new URL(urlString);</span><br><span class="line">JarURLConnection connection = new JarURLConnection(jarUrl);</span><br><span class="line"> </span><br><span class="line">Manifest manifest = connection.getManifest();</span><br><span class="line">JarFile jarFile = connection.getJarFile();</span><br><span class="line">//do something with Jar file...</span><br></pre></td></tr></table></figure>
+<h3 id="InetAddress"><a href="#InetAddress" class="headerlink" title="InetAddress"></a>InetAddress</h3><ul>
+<li>Java <strong>对 IP 地址的封装</strong>，这个类的实例经常和 UDP DatagramSockets 和 Socket，ServerSocket 类一起使用。 </li>
+</ul>
+<h5 id="创建-InetAddress"><a href="#创建-InetAddress" class="headerlink" title="创建 InetAddress :"></a>创建 InetAddress :</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InetAddress address = InetAddress.getByName(&quot;jenkov.com&quot;);</span><br><span class="line">InetAddress address = InetAddress.getByName(&quot;78.46.84.171&quot;);</span><br><span class="line">InetAddress address = InetAddress.getLocalHost();</span><br></pre></td></tr></table></figure>
+<p>​    通过域名、IP地址、本地IP地址来创建InetAddress实例。</p>
+<ul>
+<li>InetAddress 类还拥有大量你可以调用的其它方法，例如：你可以通过调用 <em>getAddress()</em> 方法来获取 IP 地址的 byte 数组。如果要了解更多的方法，最简单的方式就是读 JavaDoc 文档中关于 <em>InetAddress</em> 类的部分。 </li>
+</ul>
+<h3 id="Protocol-Design-通信协议"><a href="#Protocol-Design-通信协议" class="headerlink" title="Protocol Design 通信协议"></a>Protocol Design 通信协议</h3><p>​    设计一个客户端到服务器的系统，那么同时也需要设计客户端和服务器之间的通信协议。当然，有时候协议已经为你决定好了，比如HTTP、XML_RPC（http response 的 body 使用xml）、或者SOAP（也是http response 的 body 使用xml）。设计客户端到服务端协议的时候，一旦协议决定开启一会儿，来看一些你必须考虑的地方： </p>
+<ul>
+<li>客户端到服务端的往返通讯 </li>
+<li>区分请求结束和响应结束 </li>
+<li>防火墙穿透</li>
+</ul>
+<h5 id="客户端-服务端往返"><a href="#客户端-服务端往返" class="headerlink" title="客户端-服务端往返"></a>客户端-服务端往返</h5><ul>
+<li>当一个计算机（客户端或者服务端）在网络中发送数据到另一个计算机时，从数据发送到另一端接收数据完会花费一定时间。这就是数据在网络间的传送的时间花费。这个时间叫做延迟。</li>
+<li>协议中含有越多的往返，协议变得越慢，延迟特别高。HTTP协议只包含一个单独的响应来执行服务。换句话说就是一个单独的往返。另一方面，在一封邮件发送前，SMTP协议包含了几个客户端和服务端的往返。</li>
+<li>在协议中有多个往返的原因是：有大量的数据从客户端发送到服务端。这种情况下你有2个选择：<ul>
+<li>1.在分开往返中发送头信息；</li>
+<li>2.将消息分成更小的数据块。</li>
+</ul>
+</li>
+<li>如果服务端能完成头信息的一些初始验证 ，那么分开发送头信息是很明智的。如果头信息是空白的，发送大量数据本身就是浪费资源。</li>
+<li>在传输大量数据时，如果网络连接失败了，得从头开始重新发送数据。数据分割发送时，只需要在网络连接失败处重新发送数据块。已经发送成功的数据块不需要重新发送。</li>
+</ul>
+<h5 id="区分请求结束和响应结束"><a href="#区分请求结束和响应结束" class="headerlink" title="区分请求结束和响应结束"></a>区分请求结束和响应结束</h5><p>​    如果协议容许在同一个连接中发送多个请求，需要一个让服务端知道当前请求何时结束、下一个请求何时开始。客户端也需要知道一个响应何时结束了，下一个响应何时开始。</p>
+<p>​    对于请求有2个方法区分结束：</p>
+<p>​        1.  在请求的开始处发送请求的字长</p>
+<p>​        2. 在请求数据的最后发送一个结束标记。</p>
+<p>​    HTTP用<strong>第一个机制，</strong>在请求头中 发送了<strong>“Content-Length”</strong>。请求头会告诉服务端在头文件后有多少字节是属于请求的。这个模型的<strong>优势</strong>在于没有请求结束标志的开销。为了避免数据看上去像请求结束标志，也不需要对数据体进行编码。</p>
+<p>​    第一个方法的<strong>劣势</strong>：在数据传输前，发送者必须知道多少字节数将被传输。<em>如果数据时动态生成的，在发送前，首先你得缓存所有的数据，这样才能计算出数据的字节数。</em></p>
+<p>​    <strong>第二个机制</strong>，使用请求<strong>结束标志</strong>时，不需要知道发送了多少字节数。只需要知道请求结束标志在数据的末尾。<em>当然，必须确认已发送的数据中不包含会导致请求结束标志错误的数据</em>。</p>
+<p>可以这样做：</p>
+<p>​    可以说请求结束标志是字节值255。当然数据可能包含值255。因此，对数据中包含值255的每一个字节添加一个额外的字节，还有值255。结束请求标志被从字节值255到255之后的值为0。如下编码：</p>
+<p>​    255 in data  –&gt; 255， 255</p>
+<p>​    end-of-request  –&gt; 255, 0</p>
+<p>​    这种255，0的序列永远不会出现在数据中，因为你把所有的值255变成了255,255。同时，255,255,0也不会被错认为255,0。255,255被理解成在一起的，0是单独的。</p>
+<p>​    所以，选择一个在报文中不会出现的结束标志很重要。</p>
+<h5 id="防火墙穿透"><a href="#防火墙穿透" class="headerlink" title="防火墙穿透"></a>防火墙穿透</h5><p>​    比起HTTP协议，大多数防火墙会拦截所有的其他通信。因此把<strong>协议放在HTTP的上层</strong>是个好方法，像XML-RPC,SOAP和REST也可以这样做。</p>
+<p>​    协议置于HTTP的上层，在客户端和服务端的HTTP请求和响应中可以来回发送数据。记住，HTTP请求和响应不止包含text或者HTML。也可以在里面发送二进制数据。</p>
+<p>​    将请求放置在HTTP协议上，唯一有点奇怪的是：HTTP请求必须包含一个“主机”头字段。如果你在HTTP协议上设计P2P协议，同样的人最可能不会运行多个“主机”。在这种情况下需要头字段是不必要的开销（但是个小开销）。</p>
+<p>上面是最基础的介绍，需要进阶学习可以参考：</p>
+<ul>
+<li><a href="http://ifeve.com/java-network/" target="_blank" rel="noopener">并发编程-网络编程基础</a>，基础学习</li>
+<li><a href="https://blog.csdn.net/jesson20121020/article/details/45080803" target="_blank" rel="noopener">基于URL高层次的网络编程 </a></li>
+<li><a href="http://ifeve.com/java-concurrency-thread-directory/" target="_blank" rel="noopener">并发编程-并发和多线程</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+	
+		<div>
+			﻿<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/05/28/关于网络编程了解/">关于网络编程了解</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Atomic 的个人博客">Atomic</a></p>
+  <p><span>发布时间:</span>2018年05月28日 - 21:05</p>
+  <p><span>最后更新:</span>2018年05月28日 - 23:05</p>
+  <p><span>原始链接:</span><a href="/2018/05/28/关于网络编程了解/" title="关于网络编程了解">https://github.com/atomicworld/2018/05/28/关于网络编程了解/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/atomicworld/2018/05/28/关于网络编程了解/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+		</div>
+	
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Atomic 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Atomic 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/socket/" rel="tag"><i class="fa fa-tag"></i> socket</a>
+          
+            <a href="/tags/ServerSocket/" rel="tag"><i class="fa fa-tag"></i> ServerSocket</a>
+          
+            <a href="/tags/网络协议/" rel="tag"><i class="fa fa-tag"></i> 网络协议</a>
+          
+        </div>
+      
+	  
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/27/关于Java-NIO了解/" rel="next" title="Java-NIO了解">
+                <i class="fa fa-chevron-left"></i> Java-NIO了解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/SonYeJin.jpg"
+                alt="Atomic" />
+            
+              <p class="site-author-name" itemprop="name">Atomic</p>
+              <p class="site-description motion-element" itemprop="description">Live in the present.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/atomicworld" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络编程"><span class="nav-number">1.</span> <span class="nav-text">网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络编程的了解"><span class="nav-number">1.0.1.</span> <span class="nav-text">网络编程的了解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket连接服务端："><span class="nav-number">1.0.2.</span> <span class="nav-text">Socket连接服务端：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建socket："><span class="nav-number">1.0.2.0.1.</span> <span class="nav-text">创建socket：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#发送数据："><span class="nav-number">1.0.2.0.2.</span> <span class="nav-text">发送数据：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#读取数据："><span class="nav-number">1.0.2.0.3.</span> <span class="nav-text">读取数据：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关闭Socket："><span class="nav-number">1.0.2.0.4.</span> <span class="nav-text">关闭Socket：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ServerSocket监听客户端连接"><span class="nav-number">1.0.3.</span> <span class="nav-text">ServerSocket监听客户端连接 :</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建ServerSocket："><span class="nav-number">1.0.3.0.1.</span> <span class="nav-text">创建ServerSocket：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#服务端Sockets关闭："><span class="nav-number">1.0.3.0.2.</span> <span class="nav-text">服务端Sockets关闭：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DatagramSocket"><span class="nav-number">1.0.4.</span> <span class="nav-text">DatagramSocket</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DatagramSocket的使用"><span class="nav-number">1.0.4.0.1.</span> <span class="nav-text">DatagramSocket的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#发送数据：-1"><span class="nav-number">1.0.4.0.2.</span> <span class="nav-text">发送数据：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#接收数据："><span class="nav-number">1.0.4.0.3.</span> <span class="nav-text">接收数据：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL-和-URLConnection"><span class="nav-number">1.0.5.</span> <span class="nav-text">URL 和 URLConnection</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP链接：GET和POST"><span class="nav-number">1.0.5.0.1.</span> <span class="nav-text">HTTP链接：GET和POST</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JarURLConnection"><span class="nav-number">1.0.6.</span> <span class="nav-text">JarURLConnection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InetAddress"><span class="nav-number">1.0.7.</span> <span class="nav-text">InetAddress</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建-InetAddress"><span class="nav-number">1.0.7.0.1.</span> <span class="nav-text">创建 InetAddress :</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Protocol-Design-通信协议"><span class="nav-number">1.0.8.</span> <span class="nav-text">Protocol Design 通信协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#客户端-服务端往返"><span class="nav-number">1.0.8.0.1.</span> <span class="nav-text">客户端-服务端往返</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#区分请求结束和响应结束"><span class="nav-number">1.0.8.0.2.</span> <span class="nav-text">区分请求结束和响应结束</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#防火墙穿透"><span class="nav-number">1.0.8.0.3.</span> <span class="nav-text">防火墙穿透</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Atomic</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = '';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '2BJogSmGJ0DxHLWBj9RKVNxX-gzGzoHsz',
+        appKey: 'e853hTR5msBbzDKg4G7JzoAl',
+        placeholder: '请多指教',
+        avatar:'',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
